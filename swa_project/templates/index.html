@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Product Inventory System</title>
+  <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
+</head>
+<body>
+  <div class="container">
+    <h1>📦 Product Inventory System</h1>
+
+    <!-- Main Menu -->
+    <div id="mainMenu">
+      <button onclick="showSection('addProduct')">➕ Add Product</button>
+      <button onclick="showSection('viewProducts')">📋 View All Products</button>
+      <button onclick="showSection('getProduct')">🔍 Get Product by ID</button>
+      <button onclick="showSection('updateProduct')">✏️ Update Product</button>
+      <button onclick="showSection('deleteProduct')">🗑️ Delete Product</button>
+    </div>
+
+    <!-- Add Product -->
+    <div class="section" id="addProduct" style="display: none;">
+      <h2>Add New Product</h2>
+      <form id="addProductForm">
+        <input type="text" id="name" placeholder="Name" required />
+        <input type="text" id="description" placeholder="Description" required />
+        <input type="number" id="price" placeholder="Price" required />
+        <input type="number" id="stock" placeholder="Stock" required />
+        <button type="submit">Add</button>
+        <button type="button" onclick="goBack()">⬅️ Back</button>
+      </form>
+    </div>
+
+    <!-- View All Products -->
+    <div class="section" id="viewProducts" style="display: none;">
+      <h2>All Products</h2>
+      <table>
+        <thead>
+          <tr><th>ID</th><th>Name</th><th>Description</th><th>Price</th><th>Stock</th></tr>
+
+        </thead>
+        <tbody id="productsTableBody"></tbody>
+      </table>
+      <button onclick="goBack()">⬅️ Back</button>
+    </div>
+
+    <!-- Get Product by ID -->
+    <div class="section" id="getProduct" style="display: none;">
+      <h2>Get Product</h2>
+      <input type="number" id="getProductId" placeholder="Enter Product ID" />
+      <button onclick="fetchProductById()">Get</button>
+      <div id="productInfo"></div>
+      <button onclick="goBack()">⬅️ Back</button>
+    </div>
+
+    <!-- Update Product -->
+    <div class="section" id="updateProduct" style="display: none;">
+      <h2>Update Product</h2>
+      <form id="updateForm">
+        <input type="number" id="updateId" placeholder="Product ID" required />
+        <input type="text" id="updateName" placeholder="New Name" />
+        <input type="text" id="updateDescription" placeholder="New Description" />
+        <input type="number" id="updatePrice" placeholder="New Price" />
+        <input type="number" id="updateStock" placeholder="New Stock" />
+        <button type="submit">Update</button>
+        <button type="button" onclick="goBack()">⬅️ Back</button>
+      </form>
+    </div>
+
+    <!-- Delete Product -->
+    <div class="section" id="deleteProduct" style="display: none;">
+      <h2>Delete Product</h2>
+      <input type="number" id="deleteId" placeholder="Product ID to delete" />
+      <button onclick="deleteProductById()">Delete</button>
+      <button onclick="goBack()">⬅️ Back</button>
+    </div>
+  </div>
+
+  <script src="{{ url_for('static', filename='script.js') }}"></script>
+</body>
+</html>
